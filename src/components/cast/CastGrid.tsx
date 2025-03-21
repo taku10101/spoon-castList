@@ -18,7 +18,7 @@ export function CastGrid({ casts }: CastGridProps) {
     <div className={styles.grid}>
       {casts.map((cast, index) => (
         <CastCard
-          key={`${cast.id}-${index}`} // インデックスを追加して一意のキーを生成
+          key={`${cast.id}-${index}`}
           cast={cast}
           backgroundColor={cardColors[index % cardColors.length]}
         />

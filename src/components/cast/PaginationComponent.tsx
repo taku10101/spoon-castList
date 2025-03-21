@@ -27,13 +27,18 @@ export function PaginationComponent() {
   const offset: string[] = user?.offsets || [];
   const offsetLength = offset.length;
   const handleSelectChange = (offset: number) => {
-    window.history.pushState(
-      null,
-      `?userId=${userIdFromUrl}`,
-      `?offset=${offset}`
-    );
+    setSelectedOffset(offset);
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("userId", userIdFromUrl || "");
+    newUrl.searchParams.set("offset", offset.toString());
+    window.history.pushState(null, "", newUrl.toString());
+
     window.location.reload();
+    console.log(newUrl);
   };
+  if (!selectedOffset) {
+    return null;
+  }
   return (
     <Pagination>
       <PaginationContent>
@@ -41,7 +46,6 @@ export function PaginationComponent() {
           onClick={() => {
             handleSelectChange(selectedOffset - 1);
           }}
-          disabled={selectedOffset === 0}
         >
           Previous
         </PaginationPrevious>
@@ -49,11 +53,10 @@ export function PaginationComponent() {
           if (offsetLength < 10) {
             return (
               <PaginationItem
-                key={offset}
+                key={index}
                 onClick={() => {
                   handleSelectChange(index);
                 }}
-                active={selectedOffset === index}
               >
                 <PaginationLink>{offset}</PaginationLink>
               </PaginationItem>
@@ -66,7 +69,6 @@ export function PaginationComponent() {
                   onClick={() => {
                     handleSelectChange(index);
                   }}
-                  active={selectedOffset === index}
                 >
                   <PaginationLink>{offset}</PaginationLink>
                 </PaginationItem>
@@ -87,7 +89,6 @@ export function PaginationComponent() {
                   onClick={() => {
                     handleSelectChange(index);
                   }}
-                  active={selectedOffset === index}
                 >
                   <PaginationLink>{offset}</PaginationLink>
                 </PaginationItem>
@@ -101,7 +102,6 @@ export function PaginationComponent() {
           onClick={() => {
             handleSelectChange(selectedOffset + 1);
           }}
-          disabled={selectedOffset === offsetLength - 1}
         >
           Next
         </PaginationNext>
