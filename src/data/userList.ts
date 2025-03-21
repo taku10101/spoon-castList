@@ -6,7 +6,7 @@ export const userList: userListInterface[] = [
     name: "うな",
     avatar:
       "http://jp-cdn.spooncast.net/lives/2024/02/10/0c2f3233-9163-4052-86b3-0734906df2d2.jpg",
-    offset: [
+    offsets: [
       "00170793865200005875732",
       "00170533693500005805397",
       "00170309558900005751546",
@@ -25,7 +25,7 @@ export const userList: userListInterface[] = [
     name: "瑛",
     avatar:
       "https://jp-cdn.spooncast.net/lives/2024/12/10/ef3f638a-cb93-4639-bf30-30a5fea24654.jpg",
-    offset: [
+    offsets: [
       "00173760573300006315459",
       "00173582461100006294848",
       "00173417223400006273894",

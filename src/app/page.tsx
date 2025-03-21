@@ -4,25 +4,23 @@ import React from "react";
 import { Media } from "@/types/cast";
 import { UserSelect } from "@/components/UserSelect";
 import { userList } from "@/data/userList";
+import { PaginationComponent } from "@/components/cast/PaginationComponent";
 
-export default async function Page(
-  props: {
-    searchParams: Promise<{ userId?: string }>;
-  }
-) {
+export default async function Page(props: {
+  searchParams: Promise<{ userId?: string; offset?: number }>;
+}) {
   const searchParams = await props.searchParams;
   const userId = searchParams.userId;
+  const offset = searchParams.offset || undefined;
   const user = userList.find((user) => user.userId === userId);
 
-  let data: Media[] = [];
-
-  if (user) {
-    const datas = await Promise.all(
-      user.offset.map((offset) =>
-        fetchCastDataByUserId(userId as string, offset)
-      )
-    );
-    data = datas.flatMap((result) => result.results as Media[]);
+  const data: Media[] = [];
+  if (userId && offset) {
+    const data = await fetchCastDataByUserId(userId, user?.offsets[offset]);
+    return { data };
+  } else if (userId) {
+    const data = await fetchCastDataByUserId(userId);
+    return { data };
   }
 
   const pageContainerStyle = {
@@ -35,7 +33,8 @@ export default async function Page(
 
   return (
     <div style={pageContainerStyle}>
-      <UserSelect />
+      <PaginationComponent />
+
       <CastGrid casts={data} />
     </div>
   );
