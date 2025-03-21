@@ -26,9 +26,11 @@ export default async function Page(props: {
 
   return (
     <div style={pageContainerStyle}>
-      <UserSelect />
+      <div style={headerStyle}>
+        <UserSelect />
+        <PaginationComponent />
+      </div>
       <CastGrid casts={casts} />
-      <PaginationComponent />
     </div>
   );
 }
@@ -36,4 +38,10 @@ const pageContainerStyle = {
   margin: "0 auto",
   padding: "1.5rem 5rem",
   minHeight: "100vh",
+};
+
+const headerStyle = {
+  display: "flex",
+  alignItems: "center",
+  marginBottom: "1.5rem",
 };
