@@ -5,27 +5,9 @@ import React from "react";
 
 interface CastCardProps {
   cast: Media;
-  backgroundColor: string;
 }
 
-export function CastCard({ cast, backgroundColor }: CastCardProps) {
-  const cardContainerStyle = {
-    backgroundColor: backgroundColor,
-    borderRadius: "1.5rem",
-    overflow: "hidden",
-    boxShadow:
-      "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-  };
-
-  const cardContentStyle = {
-    position: "relative" as const,
-    aspectRatio: "3 / 4",
-  };
-
-  const imageStyle = {
-    objectFit: "cover" as const,
-  };
-
+export function CastCard({ cast }: CastCardProps) {
   return (
     <div style={cardContainerStyle}>
       <div style={cardContentStyle}>
@@ -50,3 +32,21 @@ export function CastCard({ cast, backgroundColor }: CastCardProps) {
     </div>
   );
 }
+
+const cardContainerStyle = {
+  backgroundColor: "white",
+
+  borderRadius: "1.5rem",
+  overflow: "hidden",
+  boxShadow:
+    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+};
+
+const cardContentStyle = {
+  position: "relative" as const,
+  aspectRatio: "3 / 4",
+};
+
+const imageStyle = {
+  objectFit: "cover" as const,
+};
