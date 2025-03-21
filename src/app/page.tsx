@@ -1,9 +1,7 @@
 import { fetchCastDataByUserId } from "@/data/cast";
 import { CastGrid } from "@/components/cast/CastGrid";
 import React from "react";
-import { UserSelect } from "@/components/UserSelect";
 import { userList } from "@/data/userList";
-import { PaginationComponent } from "@/components/cast/PaginationComponent";
 
 export default async function Page(props: {
   searchParams: Promise<{ userId?: string; offset?: number }>;
@@ -18,7 +16,7 @@ export default async function Page(props: {
     return null;
   }
   const data = await fetchCastDataByUserId(
-    userId,
+    userId || userList[0].userId,
     offsets ? offsets[offset] : ""
   );
 
@@ -26,10 +24,6 @@ export default async function Page(props: {
 
   return (
     <div style={pageContainerStyle}>
-      <div style={headerStyle}>
-        <UserSelect />
-        <PaginationComponent />
-      </div>
       <CastGrid casts={casts} />
     </div>
   );
@@ -38,10 +32,4 @@ const pageContainerStyle = {
   margin: "0 auto",
   padding: "1.5rem 5rem",
   minHeight: "100vh",
-};
-
-const headerStyle = {
-  display: "flex",
-  alignItems: "center",
-  marginBottom: "1.5rem",
 };

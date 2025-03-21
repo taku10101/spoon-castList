@@ -22,7 +22,11 @@ export const UserSelect = () => {
   }, []);
 
   const handleSelectChange = (userId: string) => {
-    window.history.pushState(null, "", `?userId=${userId}`);
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("userId", userId);
+    newUrl.searchParams.set("offset", "0");
+    window.history.pushState(null, "", newUrl.toString());
+    window.location.reload();
     window.location.reload();
   };
 

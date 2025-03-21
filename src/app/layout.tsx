@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { PaginationComponent } from "@/components/cast/PaginationComponent";
+import { UserSelect } from "@/components/UserSelect";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +30,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div style={headerStyle}>
+          <UserSelect />
+          <PaginationComponent />
+        </div>
         {children}
       </body>
     </html>
   );
 }
+const headerStyle = {
+  marginTop: "1.5rem",
+  marginBottom: "1.5rem",
+  marginLeft: "20px",
+  marginRight: "20px",
+  display: "flex",
+  alignItems: "center",
+};

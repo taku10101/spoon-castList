@@ -35,7 +35,6 @@ export function PaginationComponent() {
     newUrl.searchParams.set("offset", offset.toString());
     window.history.pushState(null, "", newUrl.toString());
     window.location.reload();
-    console.log(newUrl);
   };
 
   return (
