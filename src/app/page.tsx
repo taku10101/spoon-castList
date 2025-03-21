@@ -23,13 +23,6 @@ export default async function Page(props: {
   );
 
   const casts = data?.results || [];
-  const pageContainerStyle = {
-    maxWidth: "1280px",
-    margin: "0 auto",
-    padding: "1.5rem 1rem",
-    backgroundColor: "#f3f4f6",
-    minHeight: "100vh",
-  };
 
   return (
     <div style={pageContainerStyle}>
@@ -39,3 +32,10 @@ export default async function Page(props: {
     </div>
   );
 }
+const pageContainerStyle = {
+  maxWidth: "1280px",
+  margin: "0 auto",
+  padding: "1.5rem 1rem",
+  backgroundColor: "#f3f4f6",
+  minHeight: "100vh",
+};
