@@ -12,11 +12,16 @@ import { userList } from "@/data/userList";
 export const UserSelect = () => {
   const handleSelectChange = (userId: string) => {
     window.history.pushState(null, "", `?userId=${userId}`);
-    return window.location.reload();
+    window.location.reload();
   };
+
   const users = userList;
+  const userId =
+    new URLSearchParams(window.location.search).get("userId") ||
+    users[0]?.userId;
+
   return (
-    <Select onValueChange={handleSelectChange}>
+    <Select onValueChange={handleSelectChange} defaultValue={userId}>
       <SelectTrigger className='w-[280px]'>
         <SelectValue placeholder='Select a user' />
       </SelectTrigger>
