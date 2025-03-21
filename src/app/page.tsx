@@ -26,6 +26,8 @@ export default async function Page() {
     offsetList.map((offset) => fetchCastDataByUserId(userId, offset))
   );
   const data: Media[] = datas.reduce(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     (acc, cur) => acc.concat(cur.results as Media[]),
     []
   );
