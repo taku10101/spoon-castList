@@ -26,16 +26,14 @@ export default async function Page(props: {
 
   return (
     <div style={pageContainerStyle}>
-      <PaginationComponent />
       <UserSelect />
       <CastGrid casts={casts} />
+      <PaginationComponent />
     </div>
   );
 }
 const pageContainerStyle = {
-  maxWidth: "1280px",
   margin: "0 auto",
-  padding: "1.5rem 1rem",
-  backgroundColor: "#f3f4f6",
+  padding: "1.5rem 5rem",
   minHeight: "100vh",
 };

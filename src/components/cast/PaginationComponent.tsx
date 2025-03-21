@@ -13,16 +13,19 @@ import { useState, useEffect } from "react";
 
 export function PaginationComponent() {
   const [selectedOffset, setSelectedOffset] = useState<number>();
+  const [userIdFromUrl, setUserIdFromUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const offsetFromUrl = new URLSearchParams(window.location.search).get(
       "offset"
     );
+    const userIdFromUrl = new URLSearchParams(window.location.search).get(
+      "userId"
+    );
+    setUserIdFromUrl(userIdFromUrl);
     setSelectedOffset(Number(offsetFromUrl) || 0);
   }, []);
-  const userIdFromUrl = new URLSearchParams(window.location.search).get(
-    "userId"
-  );
+
   const user = userList.find((user) => user.userId === userIdFromUrl);
   const offset: string[] = user?.offsets || [];
   const offsetLength = offset.length;
