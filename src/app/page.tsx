@@ -5,11 +5,12 @@ import { Media } from "@/types/cast";
 import { UserSelect } from "@/components/UserSelect";
 import { userList } from "@/data/userList";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { userId?: string };
-}) {
+export default async function Page(
+  props: {
+    searchParams: Promise<{ userId?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const userId = searchParams.userId;
   const user = userList.find((user) => user.userId === userId);
 
