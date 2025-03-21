@@ -12,6 +12,7 @@ import { userList } from "@/data/userList";
 export const UserSelect = () => {
   const handleSelectChange = (userId: string) => {
     window.history.pushState(null, "", `?userId=${userId}`);
+    return window.location.reload();
   };
   const users = userList;
   return (
@@ -22,7 +23,9 @@ export const UserSelect = () => {
       <SelectContent>
         {users.map((user) => (
           <SelectItem key={user.userId} value={user.userId}>
-            {user.name}
+            <div>
+              <span>{user.name}</span>
+            </div>
           </SelectItem>
         ))}
       </SelectContent>
