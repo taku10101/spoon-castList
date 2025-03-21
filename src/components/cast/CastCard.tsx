@@ -42,6 +42,7 @@ export function CastCard({ cast, backgroundColor }: CastCardProps) {
         <CastCardFooter
           title={cast.contentData.title}
           likeCount={cast.contentData.likeCount || 0}
+          duration={cast.contentData.duration}
           commentCount={cast.contentData.commentCount || 0}
           castId={cast.id}
         />

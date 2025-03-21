@@ -1,11 +1,13 @@
 import { Heart, MessageCircle } from "lucide-react";
 import React from "react";
 import { SharedLink } from "../SharedLink";
+import { formatDuration } from "@/app/utils/formatDuration";
 
 interface CastCardFooterProps {
   title: string;
   likeCount: number;
   commentCount: number;
+  duration: number;
   castId: string;
 }
 
@@ -13,8 +15,10 @@ export function CastCardFooter({
   title,
   likeCount,
   commentCount,
+  duration,
   castId,
 }: CastCardFooterProps) {
+  const formatDurationTime = formatDuration(duration);
   const footerContainerStyle = {
     position: "absolute" as const,
     bottom: 0,
@@ -22,7 +26,10 @@ export function CastCardFooter({
     right: 0,
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     color: "white",
+
     padding: "1rem",
+    paddingLeft: "1.5rem",
+    paddingRight: "1.5rem",
   };
 
   const titleStyle = {
@@ -65,7 +72,10 @@ export function CastCardFooter({
 
   return (
     <div style={footerContainerStyle}>
-      <div style={titleStyle}>{title}</div>
+      <div style={statsContainerStyle}>
+        <div style={titleStyle}>{title}</div>
+        <div style={statItemStyle}>{formatDurationTime}</div>
+      </div>
 
       <div style={statsContainerStyle}>
         <div style={statItemStyle}>
@@ -78,7 +88,6 @@ export function CastCardFooter({
           <span style={statValueStyle}>{commentCount}</span>
         </div>
       </div>
-
       <div style={bottomRowStyle}>
         <span style={castLogoStyle}>CAST</span>
         <SharedLink castId={castId} />
