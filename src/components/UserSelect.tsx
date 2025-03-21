@@ -17,7 +17,7 @@ export const UserSelect = () => {
   const users = userList;
   return (
     <Select onValueChange={handleSelectChange}>
-      <SelectTrigger className='w-[180px]'>
+      <SelectTrigger className='w-[280px]'>
         <SelectValue placeholder='Select a user' />
       </SelectTrigger>
       <SelectContent>

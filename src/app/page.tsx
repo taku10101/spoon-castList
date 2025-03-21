@@ -10,7 +10,7 @@ export default async function Page({
 }: {
   searchParams: { userId?: string };
 }) {
-  const userId = searchParams.userId;
+  const userId = await searchParams.userId;
   const user = userList.find((user) => user.userId === userId);
 
   let data: Media[] = [];
