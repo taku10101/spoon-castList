@@ -21,7 +21,7 @@ export default async function Page() {
 
   // Fetch data directly in the component
 
-  const firstData = await fetchCastDataByUserId(userId);
+  // const firstData = await fetchCastDataByUserId(userId);
   const datas = await Promise.all(
     offsetList.map((offset) => fetchCastDataByUserId(userId, offset))
   );
@@ -31,9 +31,9 @@ export default async function Page() {
     (acc, cur) => acc.concat(cur.results as Media[]),
     []
   );
-  console.log(data);
-  console.log(datas);
-  console.log(firstData);
+  // console.log(data);
+  // console.log(datas);
+  // console.log(firstData);
 
   const pageContainerStyle = {
     maxWidth: "1280px",
