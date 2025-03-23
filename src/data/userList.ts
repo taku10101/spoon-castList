@@ -6,6 +6,7 @@ export const userList: userListInterface[] = [
     name: "うな",
     avatar: "",
     offsets: [
+        "",
       "00170793865200005875732",
       "00170533693500005805397",
       "00170309558900005751546",
@@ -24,6 +25,7 @@ export const userList: userListInterface[] = [
     name:"有咲",
     avatar:"",
     offsets:[
+        "",
       "00173742164400006313287",
       "00173184568900006243838",
       "00171708212100006048206",
@@ -39,6 +41,7 @@ export const userList: userListInterface[] = [
     name: "瑛",
     avatar: "",
     offsets: [
+        "",
       "00173760573300006315459",
       "00173582461100006294848",
       "00173417223400006273894",
